@@ -24,4 +24,5 @@ namespace WorkoutTracker.Models
         {
             throw new NotImplementedException();
         }
+    }
 }

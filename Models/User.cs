@@ -11,19 +11,19 @@ namespace WorkoutTracker.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public void Login()
-        {
-            throw new NotImplementedException();
-        }
+        //public void Login()
+        //{
+            //throw new NotImplementedException();
+        //}
 
-        public void Logout()
-        {
-            throw new NotImplementedException();
-        }
+        //public void Logout()
+        //{
+            //throw new NotImplementedException();
+        //}
 
-        public void Register()
-        {
-            throw new NotImplementedException();
-        }
+        //public void Register()
+        //{
+            //throw new NotImplementedException();
+        //}
     }
 }

@@ -9,6 +9,9 @@ namespace WorkoutTracker.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        IList<Location> Locations { get; set; }
+        IList<ClassType> ClassTypes { get; set; }
+        IList<Instructor> Instructors { get; set; }
 
         public void Add()
         {

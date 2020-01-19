@@ -1,0 +1,21 @@
+﻿@model WorkoutTracker.ViewModels.EditInstructorViewModel
+
+@{ 
+    ViewBag.Title = "Edit Instructor";
+}
+
+<h1>Edit Instructor</h1>
+
+<form method="post">
+
+    <div class="form-group row">
+        <div class="col-xs-3">
+            <label for="Name">Name</label>
+            <input class="form-control" name="Name" id="@Model.Name" value="@Model.Name" type="text" />
+            <input type="hidden" value="@Model.ID" name="ID" />
+        </div>
+    </div>
+
+        <input type="submit" value="Submit" />
+
+</form>

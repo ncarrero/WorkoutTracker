@@ -1,0 +1,16 @@
+﻿@model WorkoutTracker.Models.Instructor
+
+@{
+    ViewBag.Title = "Remove Instructor";
+}
+
+<h1>Remove an Instructor</h1>
+
+<form method="post">
+        <input type="checkbox" name="instructorID" id="@Model.ID" value="@Model.ID" />
+        <label for=" @Model.ID">@Model.Name</label>
+        <br />
+
+    <input type="submit" value="Submit" />
+</form>
+

@@ -1,0 +1,17 @@
+﻿@model WorkoutTracker.Models.Location
+
+@{
+    ViewBag.Title = "Remove Location";
+}
+
+<h1>Remove a Location</h1>
+
+<p>Are you sure you would like to delete this location?  Please check box below and submit.</p>
+
+<form method="post">
+    <input type="checkbox" name="locationID" id="@Model.ID" value="@Model.ID" />
+    <label for=" @Model.ID">@Model.Name</label>
+    <br />
+
+    <input type="submit" value="Submit" />
+</form>

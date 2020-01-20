@@ -1,0 +1,40 @@
+﻿@model List<WorkoutTracker.Models.Location>
+
+@{
+    ViewBag.Title = "Location";
+}
+
+<h2>Locations</h2>
+
+<table class="table">
+
+    @if (Model.Count > 0)
+    {
+        <tr>
+            <th><strong>Name</strong></th>
+            <th></th>
+        </tr>
+    }
+
+    @foreach (var location in Model)
+    {
+        <tr>
+            <td>@location.Name</td>
+            <td>
+                <a asp-controller="Location" asp-action="Edit" asp-route-locationID="@location.ID">Edit</a> |
+                <a asp-controller="Location" asp-action="Remove" asp-route-locationID="@location.ID">Remove</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@if (Model.Count == 0)
+{
+    <p>No locations yet!</p>
+}
+
+<div>
+    <p><a asp-controller="Location" asp-action="Add">Add a Location</a></p>
+</div>

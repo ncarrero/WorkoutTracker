@@ -1,0 +1,17 @@
+﻿@model WorkoutTracker.Models.ClassType
+
+@{
+    ViewBag.Title = "Remove Class Type";
+}
+
+<h1>Remove a Class Type</h1>
+
+<p>Are you sure you would like to delete this class type?  Please check box below and submit.</p>
+
+<form method="post">
+    <input type="checkbox" name="classTypeID" id="@Model.ID" value="@Model.ID" />
+    <label for=" @Model.ID">@Model.Name</label>
+    <br />
+
+    <input type="submit" value="Submit" />
+</form>

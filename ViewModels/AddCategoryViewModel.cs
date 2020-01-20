@@ -9,7 +9,7 @@ namespace WorkoutTracker.ViewModels
     public class AddCategoryViewModel
     {
         [Required]
-        [Display(Name = "Instructor Name")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WorkoutTracker.Models
 {
-    public class Workout : IChangeData
+    public class Workout
     {
         public int ID { get; set; }
         public int UserID { get; set; }
@@ -15,20 +15,5 @@ namespace WorkoutTracker.Models
         public Instructor Instructor { get; set; }
         public bool HasBeenLiked { get; set; }
         public Location Location { get; set; }
-
-        public void Add()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Edit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

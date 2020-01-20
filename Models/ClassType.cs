@@ -5,23 +5,9 @@ using System.Threading.Tasks;
 
 namespace WorkoutTracker.Models
 {
-    public class ClassType : IChangeData
+    public class ClassType
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public void Add()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Edit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -6,7 +6,7 @@ using WorkoutTracker.Models;
 
 namespace WorkoutTracker.ViewModels
 {
-    public class EditInstructorViewModel : AddCategoryViewModel
+    public class EditCategoryViewModel : AddCategoryViewModel
     {
         public int ID { get; set; }
     }

@@ -1,0 +1,54 @@
+﻿@model WorkoutTracker.ViewModels.AddEditWorkoutViewModel
+
+@{
+    ViewBag.Title = "Edit Workout";
+}
+
+<h1>Edit A Workout</h1>
+
+<!--TODO: Figure out why the dropdown menus are not displaying the category data-->
+
+<form method="post">
+
+    <div class="form-group">
+        <div class="col-xs-3">
+            <label asp-for="DateTaken">Date Taken</label>
+            <input class="form-control" asp-for="DateTaken" />
+            <span asp-validation-for="DateTaken"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LocationID">Location</label>
+        <select asp-for="LocationID" asp-items="Model.Locations"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ClassTypeID">Class Type</label>
+        <select asp-for="ClassTypeID" asp-items="Model.ClassTypes"></select>
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InstructorID">Location</label>
+        <select asp-for="InstructorID" asp-items="Model.Instructors"></select>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-3">
+            <label asp-for="CaloriesBurned">Calories Burned</label>
+            <input class="form-control" asp-for="CaloriesBurned" />
+            <span asp-validation-for="CaloriesBurned"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HasBeenLiked">Did You Like This Class?</label>
+        <input type="checkbox" name="HasBeenLiked" id="@Model.ID" />
+    </div>
+
+    <input type="hidden" value="@Model.User" name="User" />
+
+    <input type="submit" value="Submit" />
+
+</form>

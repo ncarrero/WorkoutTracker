@@ -1,0 +1,19 @@
+﻿@model WorkoutTracker.Models.Workout
+
+@{
+    ViewBag.Title = "Remove Workout";
+}
+
+<h1>Remove a Workout</h1>
+
+<p>Are you sure you would like to delete this workout?  Please check box below and submit.</p>
+
+<form method="post">
+    <div>
+    <input type="checkbox" name="workoutID" id="@Model.ID" value="@Model.ID" />
+    <label for=" @Model.ID">Remove My Workout</label>
+    </div>
+    <br />
+
+    <input type="submit" value="Submit" />
+</form>

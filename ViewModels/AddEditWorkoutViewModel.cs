@@ -12,7 +12,7 @@ namespace WorkoutTracker.ViewModels
     public class AddEditWorkoutViewModel
     {
         public int ID { get; set; }
-        public IdentityUser User { get; set; }
+        public string User { get; set; }
         [Range(100,1000, ErrorMessage="Number should be between 100 and 1000.")]
         public int CaloriesBurned { get; set; }
         public int ClassTypeID { get; set; }

@@ -14,7 +14,6 @@ namespace WorkoutTracker.Data
         { }
 
         public DbSet<Workout> Workouts { get; set; }
-        //public DbSet<Category> Categories { get; set; }
         public DbSet<ClassType> ClassTypes { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<Location> Locations { get; set; }

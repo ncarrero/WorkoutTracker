@@ -9,7 +9,7 @@ namespace WorkoutTracker.Models
     public class Workout
     {
         public int ID { get; set; }
-        public IdentityUser User { get; set; }
+        public string User { get; set; }
         public int CaloriesBurned { get; set; }
         public ClassType ClassType { get; set; }
         public DateTime DateTaken { get; set; }

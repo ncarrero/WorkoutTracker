@@ -10,6 +10,8 @@ using WorkoutTracker.ViewModels;
 
 namespace WorkoutTracker.Controllers
 {
+
+    //TODO: Find out how to save user id into Workout table; Find out how to display workouts for only the user that is signed in
     public class WorkoutController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -50,7 +52,7 @@ namespace WorkoutTracker.Controllers
 
                 Workout newWorkout = new Workout
                 {
-                    User = addEditWorkoutViewModel.User,
+                    User = User.GetUserId(),
                     CaloriesBurned = addEditWorkoutViewModel.CaloriesBurned,
                     ClassType = newClassType,
                     DateTaken = addEditWorkoutViewModel.DateTaken,
@@ -84,29 +86,42 @@ namespace WorkoutTracker.Controllers
             return Redirect("/Workout");
         }
 
+        //TODO: Fix editing functionality for dropdown menus
         public IActionResult Edit(int workoutId)
         {
-            AddEditWorkoutViewModel addEditWorkoutViewModel = new AddEditWorkoutViewModel();
+            List<Location> locations = context.Locations.ToList();
+            List<ClassType> classTypes = context.ClassTypes.ToList();
+            List<Instructor> instructors = context.Instructors.ToList();
+
+            AddEditWorkoutViewModel addEditWorkoutViewModel = new AddEditWorkoutViewModel(instructors, locations, classTypes);
             workoutId = addEditWorkoutViewModel.ID;
 
             return View(addEditWorkoutViewModel);
         }
 
         [HttpPost]
-        public IActionResult Edit(int workoutId, int caloriesBurned, ClassType classType, 
+        public IActionResult Edit(AddEditWorkoutViewModel addEditWorkoutViewModel, int workoutId, int caloriesBurned, ClassType classType, 
             DateTime dateTaken, Instructor instructor, bool hasBeenLiked, Location location)
         {
-            Workout workout = context.Workouts.Single(w => w.ID == workoutId);
-            workout.CaloriesBurned = caloriesBurned;
-            workout.ClassType = classType;
-            workout.DateTaken = dateTaken;
-            workout.Instructor = instructor;
-            workout.HasBeenLiked = hasBeenLiked;
-            workout.Location = location;
+            if (ModelState.IsValid)
+            {
+                Location newLocation = context.Locations.Single(c => c.ID == addEditWorkoutViewModel.LocationID);
+                Instructor newInstructor = context.Instructors.Single(c => c.ID == addEditWorkoutViewModel.InstructorID);
+                ClassType newClassType = context.ClassTypes.Single(c => c.ID == addEditWorkoutViewModel.ClassTypeID);
 
-            context.SaveChanges();
+                Workout workout = context.Workouts.Single(w => w.ID == workoutId);
+                workout.CaloriesBurned = caloriesBurned;
+                workout.ClassType = classType;
+                workout.DateTaken = dateTaken;
+                workout.Instructor = instructor;
+                workout.HasBeenLiked = hasBeenLiked;
+                workout.Location = location;
 
-            return Redirect("/Workout");
+                context.SaveChanges();
+                return Redirect("/Workout");
+            }
+
+            return View(addEditWorkoutViewModel);
         }
     }
 }

@@ -44,7 +44,7 @@
 
     <div class="form-group">
         <label asp-for="HasBeenLiked">Did You Like This Class?</label>
-        <input type="checkbox" name="HasBeenLiked" id="@Model.ID" />
+        <input asp-for="@Model.HasBeenLiked" type="checkbox" name="HasBeenLiked" id="@Model.HasBeenLiked" value="true" />
     </div>
 
     <input type="hidden" value="@Model.User" name="User" />

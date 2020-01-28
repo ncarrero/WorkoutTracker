@@ -6,44 +6,42 @@
 
 <h1>Edit A Workout</h1>
 
-<!--TODO: Figure out why the dropdown menus are not displaying the category data-->
-
 <form method="post">
 
     <div class="form-group">
         <div class="col-xs-3">
-            <label asp-for="DateTaken">Date Taken</label>
-            <input class="form-control" asp-for="DateTaken" />
-            <span asp-validation-for="DateTaken"></span>
+            <label asp-for="@Model.DateTaken">Date Taken</label>
+            <input class="form-control" asp-for="@Model.DateTaken" />
+            <span asp-validation-for="@Model.DateTaken"></span>
         </div>
     </div>
 
     <div class="form-group">
-        <label asp-for="LocationID">Location</label>
-        <select asp-for="LocationID" asp-items="Model.Locations"></select>
+        <label asp-for="@Model.Location.ID">Location</label>
+        <select asp-for="@Model.Location.ID" asp-items="@Model.Locations"></select>
     </div>
 
     <div class="form-group">
-        <label asp-for="ClassTypeID">Class Type</label>
-        <select asp-for="ClassTypeID" asp-items="Model.ClassTypes"></select>
+        <label asp-for="@Model.ClassType.ID">Class Type</label>
+        <select asp-for="@Model.ClassType.ID" asp-items="@Model.ClassTypes"></select>
 
     </div>
 
     <div class="form-group">
-        <label asp-for="InstructorID">Location</label>
-        <select asp-for="InstructorID" asp-items="Model.Instructors"></select>
+        <label asp-for="@Model.Instructor.ID">Location</label>
+        <select asp-for="@Model.Instructor.ID" asp-items="@Model.Instructors"></select>
     </div>
 
     <div class="form-group">
         <div class="col-xs-3">
-            <label asp-for="CaloriesBurned">Calories Burned</label>
-            <input class="form-control" asp-for="CaloriesBurned" />
-            <span asp-validation-for="CaloriesBurned"></span>
+            <label asp-for="@Model.CaloriesBurned">Calories Burned</label>
+            <input class="form-control" asp-for="@Model.CaloriesBurned" />
+            <span asp-validation-for="@Model.CaloriesBurned"></span>
         </div>
     </div>
 
     <div class="form-group">
-        <label asp-for="HasBeenLiked">Did You Like This Class?</label>
+        <label asp-for="@Model.HasBeenLiked">Did You Like This Class?</label>
         <input asp-for="@Model.HasBeenLiked" type="checkbox" name="HasBeenLiked" id="@Model.HasBeenLiked" value="true" />
     </div>
 

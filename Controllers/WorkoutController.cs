@@ -21,13 +21,13 @@ namespace WorkoutTracker.Controllers
         
         public IActionResult Index()
         {
-            IList<Workout> workouts = context.Workouts.
+            List<Workout> workouts = context.Workouts.
                 Where( w => w.User == User.GetUserId()).
                 Include(w => w.Location).
                 Include(w => w.ClassType).
                 Include(w => w.Instructor).
                 ToList();
-            
+
             return View(workouts);
         }
 

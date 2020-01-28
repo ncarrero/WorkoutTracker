@@ -42,10 +42,18 @@
 
     <div class="form-group">
         <label asp-for="HasBeenLiked">Did You Like This Class?</label>
-        <input asp-for="@Model.HasBeenLiked" type="checkbox" name="HasBeenLiked" id="@Model.HasBeenLiked" value="true"/>
+        <input asp-for="@Model.HasBeenLiked" type="checkbox" name="HasBeenLiked" id="@Model.HasBeenLiked" value="true" />
     </div>
 
     <input type="hidden" value="@Model.User" name="User" />
 
-    <input type="submit" value="Submit" />
+    <div class="form-group">
+        <input type="submit" value="Submit" />
+    </div>
 </form>
+
+<br />
+
+<div class="form-group">
+    <a asp-controller="Workout" asp-action="Index">Go Back</a>
+</div>

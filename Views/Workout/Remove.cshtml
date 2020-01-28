@@ -8,12 +8,19 @@
 
 <p>Are you sure you would like to delete this workout?  Please check box below and submit.</p>
 
-<form method="post">
-    <div>
-    <input type="checkbox" name="workoutID" id="@Model.ID" value="@Model.ID" />
-    <label for=" @Model.ID">Remove My Workout</label>
-    </div>
-    <br />
+<div class="form-group">
+    <form method="post">
+        <input type="checkbox" name="workoutID" id="@Model.ID" value="@Model.ID" />
+        <label for=" @Model.ID">Remove My Workout</label>
 
-    <input type="submit" value="Submit" />
-</form>
+        <br />
+
+        <div class="form-group">
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+</div>
+<br />
+<div>
+    <a asp-controller="Workout" asp-action="Index">Go Back</a>
+</div>

@@ -86,7 +86,7 @@ namespace WorkoutTracker.Controllers
             return Redirect("/Workout");
         }
 
-        //TODO: Fix editing functionality for dropdown menus
+        //TODO: Fix editing functionality to display current data being edited
         public IActionResult Edit(int workoutId)
         {
             List<Location> locations = context.Locations.ToList();
@@ -95,8 +95,10 @@ namespace WorkoutTracker.Controllers
 
             AddEditWorkoutViewModel addEditWorkoutViewModel = new AddEditWorkoutViewModel(instructors, locations, classTypes);
             workoutId = addEditWorkoutViewModel.ID;
+            //var editWorkout = context.Workouts.Single(i => i.ID == workoutId);
 
             return View(addEditWorkoutViewModel);
+            //return View(editWorkout);
         }
 
         [HttpPost]

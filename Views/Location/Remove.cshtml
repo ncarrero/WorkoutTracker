@@ -8,10 +8,19 @@
 
 <p>Are you sure you would like to delete this location?  Please check box below and submit.</p>
 
-<form method="post">
-    <input type="checkbox" name="locationID" id="@Model.ID" value="@Model.ID" />
-    <label for=" @Model.ID">@Model.Name</label>
-    <br />
+<div class="form-group">
+    <form method="post">
+        <input type="checkbox" name="LocationID" id="@Model.ID" value="@Model.ID" />
+        <label for=" @Model.ID">@Model.Name</label>
 
-    <input type="submit" value="Submit" />
-</form>
+        <br />
+
+        <div class=form-group>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+</div>
+<br />
+<div class="form-group">
+    <a asp-controller="Location" asp-action="Index">Go Back</a>
+</div>

@@ -11,11 +11,19 @@
     <div class="form-group row">
         <div class="col-xs-3">
             <label asp-for="Name"></label>
-            <input class="form-control" asp-for="Name"/>
+            <input class="form-control" asp-for="Name" />
             <span asp-validation-for="Name"></span>
         </div>
     </div>
 
-    <input type="submit" value="Submit" />
+    <div class="form-group row">
+        <input type="submit" value="Submit" />
+    </div>
 
 </form>
+
+<br />
+
+<div class="form-group row">
+    <a asp-controller="Instructor" asp-action="Index">Go Back</a>
+</div>

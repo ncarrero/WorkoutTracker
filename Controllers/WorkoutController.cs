@@ -21,7 +21,7 @@ namespace WorkoutTracker.Controllers
         
         public IActionResult Index()
         {
-            List<Workout> workouts = context.Workouts.
+            List<Workout> workouts = context.Workouts.OrderBy(d => d.DateTaken).
                 Where( w => w.User == User.GetUserId()).
                 Include(w => w.Location).
                 Include(w => w.ClassType).

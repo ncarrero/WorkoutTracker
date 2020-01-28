@@ -10,8 +10,6 @@ using WorkoutTracker.ViewModels;
 
 namespace WorkoutTracker.Controllers
 {
-
-    //TODO: Find out how to save user id into Workout table; Find out how to display workouts for only the user that is signed in
     public class WorkoutController : Controller
     {
         private readonly ApplicationDbContext context;

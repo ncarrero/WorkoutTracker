@@ -67,9 +67,9 @@ namespace WorkoutTracker.Controllers
 
         public IActionResult Edit(int instructorId)
         {
-            EditCategoryViewModel editCategoryViewModel = new EditCategoryViewModel();
-            instructorId = editCategoryViewModel.ID;
-            return View(editCategoryViewModel);
+            Instructor instructor = new Instructor();
+            var editInstructor = context.Instructors.Single(l => l.ID == instructorId);
+            return View(editInstructor);
         }
 
         [HttpPost]

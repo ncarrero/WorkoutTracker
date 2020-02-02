@@ -6,7 +6,8 @@
 
 <h1>Edit A Workout</h1>
 
-<form method="post">
+<form asp-controller="Workout" asp-action="Edit" method="post">
+    <input type="hidden" value="@Model.ID" name="ID" />
 
     <div class="form-group">
         <div class="col-xs-3">

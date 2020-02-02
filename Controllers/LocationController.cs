@@ -68,7 +68,7 @@ namespace WorkoutTracker.Controllers
         public IActionResult Edit(int locationId)
         {
             Location location = new Location();
-            var editLocation = context.Locations.Single(l => l.ID == locationId);
+            Location editLocation = context.Locations.Single(l => l.ID == locationId);
             return View(editLocation);
         }
 

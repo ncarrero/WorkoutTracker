@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorkoutTracker.Data;
@@ -10,6 +11,7 @@ using WorkoutTracker.ViewModels;
 
 namespace WorkoutTracker.Controllers
 {
+    [Authorize]
     public class WorkoutController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -86,38 +88,43 @@ namespace WorkoutTracker.Controllers
             return Redirect("/Workout");
         }
 
-        //TODO: Fix editing functionality to display current data being edited
         public IActionResult Edit(int workoutId)
         {
+            Workout workout = context.Workouts.Single(w => w.ID == workoutId);
+
             List<Location> locations = context.Locations.ToList();
             List<ClassType> classTypes = context.ClassTypes.ToList();
             List<Instructor> instructors = context.Instructors.ToList();
 
             AddEditWorkoutViewModel addEditWorkoutViewModel = new AddEditWorkoutViewModel(instructors, locations, classTypes);
-            workoutId = addEditWorkoutViewModel.ID;
-            //var editWorkout = context.Workouts.Single(i => i.ID == workoutId);
+            addEditWorkoutViewModel.ID = workout.ID;
+            addEditWorkoutViewModel.User = workout.User;
+            addEditWorkoutViewModel.CaloriesBurned = workout.CaloriesBurned;
+            addEditWorkoutViewModel.DateTaken = workout.DateTaken;
+            addEditWorkoutViewModel.ClassType = workout.ClassType;
+            addEditWorkoutViewModel.Instructor = workout.Instructor;
+            addEditWorkoutViewModel.Location = workout.Location;
+            addEditWorkoutViewModel.HasBeenLiked = workout.HasBeenLiked;
 
             return View(addEditWorkoutViewModel);
-            //return View(editWorkout);
         }
 
         [HttpPost]
-        public IActionResult Edit(AddEditWorkoutViewModel addEditWorkoutViewModel, int workoutId, int caloriesBurned, ClassType classType, 
-            DateTime dateTaken, Instructor instructor, bool hasBeenLiked, Location location)
+        public IActionResult Edit(AddEditWorkoutViewModel addEditWorkoutViewModel, int caloriesBurned, DateTime dateTaken, bool hasBeenLiked)
         {
             if (ModelState.IsValid)
             {
-                Location newLocation = context.Locations.Single(c => c.ID == addEditWorkoutViewModel.LocationID);
-                Instructor newInstructor = context.Instructors.Single(c => c.ID == addEditWorkoutViewModel.InstructorID);
-                ClassType newClassType = context.ClassTypes.Single(c => c.ID == addEditWorkoutViewModel.ClassTypeID);
+                Location newLocation = context.Locations.Single(c => c.ID == addEditWorkoutViewModel.Location.ID);
+                Instructor newInstructor = context.Instructors.Single(c => c.ID == addEditWorkoutViewModel.Instructor.ID);
+                ClassType newClassType = context.ClassTypes.Single(c => c.ID == addEditWorkoutViewModel.ClassType.ID);
 
-                Workout workout = context.Workouts.Single(w => w.ID == workoutId);
+                Workout workout = context.Workouts.Single(w => w.ID == addEditWorkoutViewModel.ID);
                 workout.CaloriesBurned = caloriesBurned;
-                workout.ClassType = classType;
+                workout.ClassType = newClassType;
                 workout.DateTaken = dateTaken;
-                workout.Instructor = instructor;
+                workout.Instructor = newInstructor;
                 workout.HasBeenLiked = hasBeenLiked;
-                workout.Location = location;
+                workout.Location = newLocation;
 
                 context.SaveChanges();
                 return Redirect("/Workout");

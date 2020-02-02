@@ -9,15 +9,21 @@ using WorkoutTracker.Models;
 
 namespace WorkoutTracker.ViewModels
 {
-    public class AddEditWorkoutViewModel : Workout
+    public class AddEditWorkoutViewModel
     {
+        public int ID { get; set; }
+        public string User { get; set; }
         [Range(100,1000, ErrorMessage="Number should be between 100 and 1000.")]
-        public override int CaloriesBurned { get; set; }
+        public int CaloriesBurned { get; set; }
         [DataType(DataType.DateTime)]
-        public override DateTime DateTaken { get; set; }
+        public DateTime DateTaken { get; set; }
         public int ClassTypeID { get; set; }
+        public ClassType ClassType { get; set; }
         public int InstructorID { get; set; }
+        public Instructor Instructor { get; set; }
         public int LocationID { get; set; }
+        public Location Location { get; set; }
+        public bool HasBeenLiked { get; set; }
 
         public List<SelectListItem> Locations { get; set; }
         public List<SelectListItem> Instructors { get; set; }

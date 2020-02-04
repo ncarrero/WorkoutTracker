@@ -19,14 +19,63 @@ namespace WorkoutTracker.Controllers
             context = dbContext;
         }
         
-        public IActionResult Index()
+        //TODO: fix code to allow for lowercase
+        public IActionResult Index(string searchBy, string search)
         {
-            List<Workout> workouts = context.Workouts.OrderBy(d => d.DateTaken).
-                Where( w => w.User == User.GetUserId()).
-                Include(w => w.Location).
-                Include(w => w.ClassType).
-                Include(w => w.Instructor).
-                ToList();
+            List<Workout> workouts = context.Workouts.
+            OrderBy(d => d.DateTaken).
+            Where(w => w.User == User.GetUserId()).
+            Include(w => w.Location).
+            Include(w => w.ClassType).
+            Include(w => w.Instructor).
+            ToList();
+
+            if (search == null)
+            {
+                return View(workouts);
+            }
+
+            if (searchBy == "DateTaken")
+            {
+                List<Workout> newWorkouts = workouts.
+                    Where(x => x.DateTaken.ToString().Contains(search) || x.DateTaken.ToString().ToLower().Contains(search)).ToList();
+                return View(newWorkouts);
+            }
+
+            if (searchBy == "Location")
+            {
+                List<Workout> newWorkouts = workouts.
+                    Where(x => x.Location.Name.Contains(search) || x.Location.Name.ToLower().Contains(search)).ToList();
+                return View(newWorkouts);
+            }
+
+            if (searchBy == "ClassType")
+            {
+                List<Workout> newWorkouts = workouts.
+                    Where(x => x.ClassType.Name.Contains(search) || x.ClassType.Name.ToLower().Contains(search)).ToList();
+                return View(newWorkouts);
+            }
+
+            if (searchBy == "Instructor")
+            {
+                List<Workout> newWorkouts = workouts.
+                    Where(x => x.Instructor.Name.Contains(search) || x.Instructor.Name.ToLower().Contains(search)).ToList();
+                return View(newWorkouts);
+            }
+
+            if (searchBy == "HasBeenLiked")
+            {
+                List<Workout> newWorkouts = workouts.
+                    Where(x => x.HasBeenLiked.ToString().Contains(search) || x.HasBeenLiked.ToString().ToLower().Contains(search)).ToList();
+                return View(newWorkouts);
+            }
+
+            if (searchBy == "CaloriesBurned")
+            {
+                List<Workout> newWorkouts = workouts.
+                    Where(x => x.CaloriesBurned.ToString().Contains(search)).ToList();
+                return View(newWorkouts);
+            }
 
             return View(workouts);
         }

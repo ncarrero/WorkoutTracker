@@ -4,7 +4,29 @@
     ViewBag.Title = "Workouts";
 }
 
-<h2>My Workouts</h2>
+<div>
+    <h2 class="text-center">My Workouts</h2>
+</div>
+
+<form class="text-center" asp-controller="Workout" asp-action="Index" method="get">
+    <div class="form-group">
+        <p>
+            <strong>Search By:</strong>
+            <input type="radio" name="searchBy" value="DateTaken" checked="checked"/> Date Taken
+            <input type="radio" name="searchBy" value="ClassType" /> Class Type
+            <input type="radio" name="searchBy" value="Location" /> Location
+            <input type="radio" name="searchBy" value="Instructor" /> Instructor
+            <input type="radio" name="searchBy" value="CaloriesBurned" /> Calories Burned
+            <input type="radio" name="searchBy" value="HasBeenLiked" /> Has Been Liked
+        </p>
+    </div>
+    <div>
+        <input class="col-xs-3" type="text" name="search" />
+        <input type="submit" value="Search" /> <br /><br>
+    </div>
+
+</form>
+
 
 @if (Model.Count > 0)
 {

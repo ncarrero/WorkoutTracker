@@ -6,7 +6,7 @@ using WorkoutTracker.ViewModels;
 
 namespace WorkoutTracker.Models
 {
-    //TODO: Refactor categories controllers code to utilize these methods;Ccreate Categories model & refactor code accordingly
+    //TODO: Refactor categories controllers code to utilize these methods; Create Categories model & refactor code accordingly
     public class ChangeData
     {
         public void AddCategory()

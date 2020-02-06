@@ -20,8 +20,7 @@ namespace WorkoutTracker.Controllers
         {
             context = dbContext;
         }
-        
-        //TODO: fix code to allow for lowercase
+
         public IActionResult Index(string searchBy, string search)
         {
             List<Workout> workouts = context.Workouts.

@@ -3,6 +3,9 @@
 The idea for this project came from the LA fitness mobile app.  I currently go their fitness classes and have tried to keep track of which classes I enjoyed the most and with which instructors.  I noticed that there was a place to heart classes that you liked on the app, but no way to track them.  My app will not only track what classes the user has taken and liked, it will also be able to give the user data on which classes have already been taken, the total amount of calories burned, how many classes
 have been taken at the same location, how many classes have been taken with the same instructor, and more.  Users will be able to get all the information they need in my workout data application.  My goal is to improve the LA fitness app by utilizing the data so that it can help the user determine healthy workout habits, keep track of workouts that were the most enjoyable, and which workouts burned the most calories.
 
+##Project Planning
+* [Trello Board](https://trello.com/b/YbhsYOmf/liftoff-project)
+
 ## Features: List 3-5 features that you will implement in your project.  Each feature should have a name and 1-2 sentence description.
 * User Login: Users will be able to create their own personal account and log in to the application to document progress.  Each user will have a profile page displaying the appropriate data.
 * Search: Users will be able to search for classes they have taken based on class name / type, location, instructor, or whether or not they liked the class.

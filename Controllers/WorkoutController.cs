@@ -66,6 +66,12 @@ namespace WorkoutTracker.Controllers
 
             if (searchBy == "HasBeenLiked")
             {
+                if (search.Contains("y") || search.Contains("Y"))
+                    search = true.ToString();
+
+                if (search.Contains("n") || search.Contains("N"))
+                    search = false.ToString();
+
                 List<Workout> newWorkouts = workouts.
                     Where(x => x.HasBeenLiked.ToString().Contains(search) || x.HasBeenLiked.ToString().ToLower().Contains(search)).ToList();
                 return View(newWorkouts);

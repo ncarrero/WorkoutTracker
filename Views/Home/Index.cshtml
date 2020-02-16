@@ -18,21 +18,15 @@
 
 <h3 class="text-center">My Workout Data</h3>
 
-<div>
-    <table width="100%">
+<div class="text-center">
+    <table width="100%" border="1">
         <tr>
             <th>Total Workouts</th>
-            <th>Calories Burned</th>
-            <th>Class Types</th>
-            <th>Locations</th>
-            <th>Instructors</th>
-            <th>Has Been Liked</th>
-        </tr>
-
-        <tr>
             <td>@ViewBag.Workouts.Count</td>
+        </tr>
+        <tr>
+            <th>Calories Burned</th>
             <td>
-                Total:
                 @{
                     int sum = 0;
                     foreach (Workout workout in ViewBag.Workouts)
@@ -40,13 +34,25 @@
                         sum += workout.CaloriesBurned;
                     }
                 }
-                @sum.ToString()
+                @sum
             </td>
+        </tr>
+        <tr>
+            <th>Class Types</th>
             <td>@ViewBag.ClassTypesGrouped</td>
+        </tr>
+        <tr>
+            <th>Locations</th>
             <td>@ViewBag.LocationsGrouped</td>
+        </tr>
+        <tr>
+            <th>Instructors</th>
             <td>@ViewBag.InstructorsGrouped</td>
+        </tr>
+        <tr>
+            <th>Has Been Liked</th>
             <td>
-                @{ 
+                @{
                     int sumTrue = 0;
                     int sumFalse = 0;
                     foreach (Workout workout in ViewBag.Workouts)
@@ -57,7 +63,7 @@
                             sumFalse += 1;
                     }
                 }
-                
+
                 Yes: @sumTrue No: @sumFalse
             </td>
         </tr>

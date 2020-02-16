@@ -6,39 +6,60 @@
 
     <div class="text-center">
         <br />
-        <h1 class="display-4">Hello, @User.Identity.Name!</h1>
+        <h2 class="display-4">Hello, @User.Identity.Name!</h2>
         <br />
-        <p>Below you can view all data gathered from workouts you have already taken.</p>
-        <a asp-controller="Workout" asp-action="Index">View My Workouts</a>
+        <h3><a asp-controller="Workout" asp-action="Index">View My Workouts</a></h3>
+        <br />
+        <p>Below you will see all of your data gathered from workouts you have already taken.  You can see the breakdown of each workout category below to 
+            assist you in your health journey.  As you add more workouts, this data will change to relfect that.  Enjoy!</p>
     </div>
 
 <br />
-        <!--TODO: add workout data for user on this page (see Trello user story)-->
-    <div>
-            <table width="100%">
-                <tr>
-                    <th>Total Workouts</th>
-                    <th>Calories Burned</th>
-                    <th>Class Types</th>
-                    <th>Locations</th>
-                    <th>Instructors</th>
-                    <th>Has Been Liked</th>
-                </tr>
 
-                <tr>
-                    <td>@ViewBag.Workouts.Count</td>
-                    <td>
-                        Total:
-                        @{
-                            int sum = 0;
-                            foreach (Workout workout in ViewBag.Workouts)
-                            {
-                                sum += workout.CaloriesBurned;
-                            }
-                        }
-                        @sum.ToString()
-                    </td>
-                    <td>@ViewBag.ClassTypesGrouped</td>
-                </tr>
-            </table>
-    </div>
+<h3 class="text-center">My Workout Data</h3>
+
+<div>
+    <table width="100%">
+        <tr>
+            <th>Total Workouts</th>
+            <th>Calories Burned</th>
+            <th>Class Types</th>
+            <th>Locations</th>
+            <th>Instructors</th>
+            <th>Has Been Liked</th>
+        </tr>
+
+        <tr>
+            <td>@ViewBag.Workouts.Count</td>
+            <td>
+                Total:
+                @{
+                    int sum = 0;
+                    foreach (Workout workout in ViewBag.Workouts)
+                    {
+                        sum += workout.CaloriesBurned;
+                    }
+                }
+                @sum.ToString()
+            </td>
+            <td>@ViewBag.ClassTypesGrouped</td>
+            <td>@ViewBag.LocationsGrouped</td>
+            <td>@ViewBag.InstructorsGrouped</td>
+            <td>
+                @{ 
+                    int sumTrue = 0;
+                    int sumFalse = 0;
+                    foreach (Workout workout in ViewBag.Workouts)
+                    {
+                        if (workout.HasBeenLiked == true)
+                            sumTrue += 1;
+                        else
+                            sumFalse += 1;
+                    }
+                }
+                
+                Yes: @sumTrue No: @sumFalse
+            </td>
+        </tr>
+    </table>
+</div>

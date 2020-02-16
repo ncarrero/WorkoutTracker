@@ -22,25 +22,8 @@ namespace WorkoutTracker.Controllers
             context = dbContext;
         }
 
-        //private readonly ILogger<HomeController> _logger;
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        //parameter: string searchTerm
         public IActionResult Index()
         {
-            //var workouts = context.Workouts.OrderBy(d => d.DateTaken).
-            //    Where(w => w.User == User.GetUserId());
-
-            //if (!string.IsNullOrEmpty(searchTerm))
-            //{
-            //    workouts = workouts.Where(s => s.ClassType.Name.Contains(searchTerm));
-            //}
-
-            //return View(workouts);
             List<Workout> Workouts = context.Workouts.Where(w => w.User == User.GetUserId())
                 .Include(w => w.Location)
                 .Include(w => w.Instructor)
@@ -53,7 +36,7 @@ namespace WorkoutTracker.Controllers
                 .Select(w => w.ClassType).ToList();
 
             var classTypesGrouped = ClassTypes.GroupBy(x => x.Name)
-                       .Select(x => new { Name = x.Key, Values = x.Count() });
+                .Select(x => new { Name = x.Key, Values = x.Count() });
 
             StringBuilder sb = new StringBuilder();
             foreach (var x in classTypesGrouped)
@@ -62,6 +45,34 @@ namespace WorkoutTracker.Controllers
             }
 
             ViewBag.ClassTypesGrouped = sb;
+
+            List<Location> Locations = context.Workouts.Where(w => w.User == User.GetUserId())
+                .Select(w => w.Location).ToList();
+
+            var locationsGrouped = Locations.GroupBy(x => x.Name)
+                .Select(x => new { Name = x.Key, Values = x.Count() });
+
+            StringBuilder sb2 = new StringBuilder();
+            foreach (var x in locationsGrouped)
+            {
+                sb2.AppendLine(x.Name + ": " + x.Values);
+            }
+
+            ViewBag.LocationsGrouped = sb2;
+
+            List<Instructor> Instructors = context.Workouts.Where(w => w.User == User.GetUserId())
+                .Select(w => w.Instructor).ToList();
+
+            var instructorsGrouped = Instructors.GroupBy(x => x.Name)
+                .Select(x => new { Name = x.Key, Values = x.Count() });
+
+            StringBuilder sb3 = new StringBuilder();
+            foreach (var x in instructorsGrouped)
+            {
+                sb3.AppendLine(x.Name + ": " + x.Values);
+            }
+
+            ViewBag.InstructorsGrouped = sb3;
 
             return View();
         }

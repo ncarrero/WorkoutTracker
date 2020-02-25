@@ -32,7 +32,14 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Workout" asp-action="Index">Workouts</a>
+                            <div class="dropdown show">
+                                <a class="btn btn-default dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                   asp-area="" asp-controller="Workout" asp-action="Index">Workouts</a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Workout" asp-action="Index">View Workouts</a>
+                                    <a class="dropdown-item" asp-controller="Workout" asp-action="Add">Add New Workout</a>
+                                </div>
                         </li>
                     </ul>
                 </div>

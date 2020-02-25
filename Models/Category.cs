@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace WorkoutTracker.Models
 {
-    public class Instructor : Category
-    { }
+    public class Category
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+    }
 }

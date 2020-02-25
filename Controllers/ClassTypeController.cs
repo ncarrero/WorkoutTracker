@@ -9,6 +9,7 @@ using WorkoutTracker.ViewModels;
 
 namespace WorkoutTracker.Controllers
 {
+    //TODO: refactor repetitive code
     public class ClassTypeController : Controller
     {
         private readonly ApplicationDbContext context;
